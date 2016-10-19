@@ -8,18 +8,14 @@ MaterialDialog
 Screenshots:
 --------
 
+![Screenshots/screenshot1](https://raw.githubusercontent.com/iballan/materialdialog/master/screenshots/md.gif)
 
 
 Usage :
 
-XML Layout:
-``` xml
-// No XML
-```
-
 Java:
 ``` java
-	new MD.Builder(this) // Context
+	new MD.Builder(this) // Context or Activity or ApplicationContext
 		.title("This is Title") // String or resource
 		.message("This is Message") // String or resource
 		.positiveText("OK") // String or resource
