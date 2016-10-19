@@ -1,7 +1,7 @@
 MaterialDialog
 ==============
 
-[![](https://jitpack.io/v/iballan/RateDialog.svg)](https://jitpack.io/#iballan/RateDialog)
+[![MD-0.0.1](https://jitpack.io/v/iballan/materialdialog.svg)](https://jitpack.io/#iballan/materialdialog)
 
 ## Material Dialog (MD) allows you to implement material dialogs in the simplest way
 
