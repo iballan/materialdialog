@@ -398,7 +398,7 @@ public class MD {
             return this;
         }
 
-        public Builder dimissedListener(OnMDDismissed val) {
+        public Builder dismissedListener(OnMDDismissed val) {
             dismissedListener = val;
             return this;
         }
