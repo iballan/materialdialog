@@ -33,7 +33,6 @@ public class MD {
     private final OnMDButtonClicked positiveListener, negativeListener, neutralListener;
     private final OnMDDismissed dismissedListener;
     private final OnMDCanceled canceledListener;
-    private final String positiveText, negativeText, neutralText, title, message;
     private final
     @StringRes
     int positiveTextRes, negativeTextRes, neutralTextRes;
@@ -42,15 +41,22 @@ public class MD {
     @DrawableRes
     int iconDrawableRes, backgroundDrawableRes;
     private final
-    @StringRes
-    int titleRes, messageRes;
-    private final
     @LayoutRes
     int customViewRes;
     private final
     @ColorInt
     int positiveColor, negativeColor, neutralColor,
             titleColor, messageColor, backgroundColor;
+    private String positiveText;
+    private String negativeText;
+    private String neutralText;
+    private String title, message;
+    private
+    @StringRes
+    int titleRes;
+    private
+    @StringRes
+    int messageRes;
     private Drawable backgroundDrawable;
     private View customView;
     private AlertDialog mAlertDialog;
@@ -96,6 +102,96 @@ public class MD {
         initAlertDialog();
 
         initContentView();
+    }
+
+    /**
+     * Create a dialog with two button (quick dialog solution)
+     *
+     * @param context:          Context
+     * @param title:            dialog title
+     * @param message:          dialog message
+     * @param btnTxtPositive:   Positive button text
+     * @param positiveListener: positive button listener
+     * @param btnTxtNegative:   negative button text
+     * @param negativeListener: negative button listener
+     * @return MD
+     */
+    public static MD simpleDoubleBtnMD(Context context,
+                                       String title, String message,
+                                       String btnTxtPositive,
+                                       OnMDButtonClicked positiveListener,
+                                       String btnTxtNegative,
+                                       OnMDButtonClicked negativeListener) {
+        return new MD.Builder(context)
+                .title(title)
+                .message(message)
+                .positiveText(btnTxtPositive)
+                .positiveListener(positiveListener)
+                .negativeText(btnTxtNegative)
+                .negativeListener(negativeListener)
+                .build();
+    }
+
+    /**
+     * Create a dialog with two button (quick dialog solution)
+     * @param context:          Context
+     * @param title:            dialog title resource
+     * @param message:          dialog message resource
+     * @param btnTxtPositive:   Positive button text resource
+     * @param positiveListener: positive button listener
+     * @param btnTxtNegative:   negative button text resource
+     * @param negativeListener: negative button listener
+     * @return MD
+     */
+    public static MD simpleDoubleBtnMD(Context context,
+                                       @StringRes int title, @StringRes int message,
+                                       @StringRes int btnTxtPositive,
+                                       OnMDButtonClicked positiveListener,
+                                       @StringRes int btnTxtNegative,
+                                       OnMDButtonClicked negativeListener) {
+        return simpleDoubleBtnMD(context,
+                context.getString(title),
+                context.getString(message),
+                context.getString(btnTxtPositive), positiveListener,
+                context.getString(btnTxtNegative), negativeListener);
+    }
+
+    /**
+     * Create a dialog with one button (quick dialog solution)
+     *
+     * @param context:      Its better with context
+     * @param title:        dialog title
+     * @param message:      dialog message
+     * @param btnTxt:       button text
+     * @param onBtnClicked: Button click listener (if not important, it can be null)
+     * @return MD
+     */
+    public static MD simpleBtnMD(Context context,
+                                 String title, String message,
+                                 String btnTxt, OnMDButtonClicked onBtnClicked) {
+        return new MD.Builder(context)
+                .title(title)
+                .message(message)
+                .positiveText(btnTxt)
+                .positiveListener(onBtnClicked)
+                .build();
+    }
+
+    /**
+     * Create a dialog with one button (quick dialog solution)
+     *
+     * @param context:      Its better with context
+     * @param title:        dialog title resource
+     * @param message:      dialog message resource
+     * @param btnTxt:       button text resource
+     * @param onBtnClicked:
+     * @return MD
+     */
+    public static MD simpleBtnMD(Context context,
+                                 @StringRes int title, @StringRes int message,
+                                 @StringRes int btnTxt, OnMDButtonClicked onBtnClicked) {
+        return simpleBtnMD(context, context.getString(title),
+                context.getString(message), context.getString(btnTxt), onBtnClicked);
     }
 
     private void initAlertDialog() {
@@ -280,6 +376,60 @@ public class MD {
      */
     public boolean isShowing() {
         return mAlertDialog != null && mAlertDialog.isShowing();
+    }
+
+    /**
+     * Change the title of the Dialog
+     *
+     * @param title: title string resource id
+     * @return MD
+     */
+    public MD title(@StringRes int title) {
+        this.titleRes = title;
+        return title(mContext.getString(title));
+    }
+
+    /**
+     * Change the title of the Dialog
+     *
+     * @param title: title string
+     * @return MD
+     */
+    public MD title(String title) {
+        this.title = title;
+        if (contentView != null) {
+            final TextView tv = (TextView) contentView.findViewById(R.id.title);
+            tv.setText(title);
+            tv.setVisibility(View.VISIBLE);
+        }
+        return this;
+    }
+
+    /**
+     * Change the message of the dialog
+     *
+     * @param message: message string resource id
+     * @return MD
+     */
+    public MD message(@StringRes int message) {
+        messageRes = message;
+        return message(mContext.getString(messageRes));
+    }
+
+    /**
+     * Change the message of the dialog
+     *
+     * @param message: message string
+     * @return MD
+     */
+    public MD message(String message) {
+        this.message = message;
+        if (contentView != null) {
+            final TextView msg = (TextView) contentView.findViewById(R.id.message);
+            msg.setText(message);
+            msg.setVisibility(View.VISIBLE);
+        }
+        return this;
     }
 
     /**

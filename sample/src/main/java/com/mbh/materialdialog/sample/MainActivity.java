@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,31 +18,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    private boolean checkForRating() {
-        RateDialog.Config config = new RateDialog.Config();
-        config.setInstallDays(2); // after installation with 7 days show it
-        config.setLaunchTimes(2); // after launch times show it
-        config.setMessage(R.string.rate_message);
-        config.setmNoThanks(R.string.rate_no_thanks);
-        config.setmOkButton(R.string.rate_ok);
-        config.setmRemindMeLater(R.string.rate_remind_me);
-        config.setTitle(R.string.rate_title);
-        return RateDialog.onStart(config, MainActivity.this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
     public void showDialogSimpleMessage(View view) {
-        new MD.Builder(this)
-                .title("This is Title")
-                .message("This is Message")
-                .positiveText("OK")
-                .build().show();
+//        new MD.Builder(this)
+//                .title("This is Title")
+//                .message("This is Message")
+//                .positiveText("OK")
+//                .build().show();
+        MD.simpleBtnMD(this, "Simple Dialog", "Message goes here", "OK",
+                null).show().title("Dialog (Simple)");
     }
 
     public void showDialogSimpleMessage2(View view) {
