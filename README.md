@@ -32,7 +32,7 @@ You can install using Gradle:
 	    maven { url "https://jitpack.io" }
 	}
 	dependencies {
-	    compile 'com.github.iballan:MaterialDialog:0.0.2'
+	    compile 'com.github.iballan:MaterialDialog:0.0.2.1'
 	}
 ```
 
