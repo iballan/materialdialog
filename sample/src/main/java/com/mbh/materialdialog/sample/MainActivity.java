@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 .negativeText("Cancel")
                 .autoDismiss(true)
                 .cancalable(true)
-                .build().show();
+                .show();
     }
 
     public void showDialogWithIcon(View view) {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 .icon(R.drawable.ic_launcher)
                 .autoDismiss(true)
                 .cancalable(true)
-                .build().show();
+                .show();
     }
 
     public void showDialogCustomView(View view) {
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 .customView(R.layout.custom_view1)
                 .autoDismiss(true)
                 .cancalable(true)
-                .build().show();
+                .show();
     }
 
     public void showDialogCustomView2(View view) {
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 .customView(R.layout.custom_view1)
                 .autoDismiss(true)
                 .cancalable(true)
-                .build().show();
+                .show();
     }
 
     public void showDialogStyled(View view) {
@@ -127,6 +127,6 @@ public class MainActivity extends AppCompatActivity {
                 .backgroundColor(Color.DKGRAY)
                 .autoDismiss(true)
                 .cancalable(true)
-                .build().show();
+                .show();
     }
 }

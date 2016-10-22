@@ -503,6 +503,7 @@ public class MD {
         private
         @LayoutRes
         int customViewRes = -1;
+        private MD md = null;
 
         public Builder(Context context) {
             this.context = context;
@@ -654,7 +655,14 @@ public class MD {
         }
 
         public MD build() {
-            return new MD(this);
+            if(md == null)
+                md = new MD(this);
+            return md;
+        }
+
+        public MD show() {
+            if(md == null) build();
+            return md.show();
         }
     }
 }
